@@ -1,3 +1,4 @@
+"""Vue: pour interagir avec l'utilisateur"""
 from controller import Controller
 import keyboard
 if __name__ == "__main__":

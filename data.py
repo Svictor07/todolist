@@ -1,6 +1,5 @@
-#!/usr/bin/python
+"""Classe permettant d'interagir avec la base de données"""
 import mariadb
-
 class Data:
 
     def __init__(self, user="root", password="", host="localhost", database="taches"):
@@ -17,6 +16,7 @@ class Data:
         except mariadb.Error as e:
             print(f"Erreur de connexion : {e}")
 
+    # Ajouter une tâche à la base de données
     def insert_tache(self, nom, status=False):
         """Insère une tâche dans la table `taches`."""
         try:
@@ -26,6 +26,7 @@ class Data:
         except mariadb.Error as e:
             print(f"Erreur lors de l'insertion : {e}")
 
+    # Récupérer une tâche de la base de données
     def retrieve_tache(self, nom):
         """Récupère les informations d'une tâche en fonction du nom."""
         try:
@@ -37,8 +38,7 @@ class Data:
         except mariadb.Error as e:
             print(f"Erreur lors de la récupération : {e}")
 
-
-
+    # supprimer une tâche de la base de données
     def delete_tache(self, nom):
         """Supprime une tâche de la table `taches`."""
         try:
@@ -48,6 +48,7 @@ class Data:
         except mariadb.Error as e:
             print(f"Erreur lors de la suppression : {e}")
 
+    # Mettre à jour une tâche dans la base de données
     def update_tache(self,nom,status):
         """Mettre à jour une tâche"""
         try:
@@ -56,8 +57,9 @@ class Data:
             print(f"La tâche {nom} a été mise à jour")
         except mariadb.Error as e:
             print(f"Erreur lors de la mise à jour : {e}")
+
+    """Ferme la connexion à la base de données."""
     def close_connection(self):
-        """Ferme la connexion à la base de données."""
         try:
             self.cur.close()
             self.conn.close()

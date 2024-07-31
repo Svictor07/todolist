@@ -1,4 +1,6 @@
 
+"""Classe principale qui définit une tâche
+et ses différentes méthodes CRUD"""
 class Tache:
 
     def __init__(self,nom):
